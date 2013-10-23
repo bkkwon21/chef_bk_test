@@ -11,7 +11,13 @@
 # or implied. See the License for the specific language governing permissions
 # and limitations under the License.
 
-rpm_package "jdk-1.6.0_45" do
+remote_file "/tmp/jdk-6u45-linux-amd64.rpm" do
     source "https://github.com/bkkwon21/chef_bk_test/blob/master/rpms/jdk-6u45-linux-amd64.rpm"
+    action :create
+end
+
+
+rpm_package "jdk-6u45-linux" do
+    source "/tmp/jdk-6u45-linux-amd64.rpm"
     action :install
 end
